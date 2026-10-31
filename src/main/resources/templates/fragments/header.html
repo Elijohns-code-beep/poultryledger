@@ -1,10 +1,10 @@
-<!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<div th:fragment="header(title, eyebrow)" class="row g-0 app-shell">
-  <aside class="col-lg-2 brand-rail p-3 p-lg-4">
-    <div class="desktop-brand mb-4"><div class="brand fs-4 fw-bold"><span class="brand-mark"></span>Poultry Ledger</div><div class="small text-white-50 mt-1">A practical flock record</div></div>
-    <nav class="nav flex-lg-column gap-1">
+<div th:fragment="header(title, eyebrow)" class="app-shell">
+  <aside id="site-navigation" class="brand-rail" aria-label="Primary navigation">
+    <div class="brand-block"><div class="brand fs-4 fw-bold"><span class="brand-mark"></span>Poultry Ledger</div><div class="small text-white-50 mt-1">A practical flock record</div></div>
+    <nav class="nav flex-column gap-1" aria-label="Main menu">
       <a class="nav-link" th:href="@{/daily-log}"><span class="nav-icon">DL</span><span>Daily Log</span></a>
+      <a class="nav-link" th:href="@{/daily-entries}"><span class="nav-icon">DE</span><span>Daily Entries</span></a>
       <a class="nav-link" th:href="@{/feed-mixtures}"><span class="nav-icon">FM</span><span>Feed Mixtures</span></a>
       <a class="nav-link" th:href="@{/sittings}"><span class="nav-icon">ST</span><span>Sittings</span></a>
       <a class="nav-link" th:href="@{/chicks}"><span class="nav-icon">CK</span><span>Chicks</span></a>
@@ -13,9 +13,9 @@
       <a class="nav-link" th:href="@{/settings}"><span class="nav-icon">SE</span><span>Settings</span></a>
     </nav>
   </aside>
-  <main class="col-lg-10"><div class="page-wrap">
-    <div class="mobile-toolbar"><div class="brand fw-bold"><span class="brand-mark"></span>Poultry Ledger</div><span class="small text-muted">Kenya · sh</span></div>
-    <div class="eyebrow mb-2" th:text="${eyebrow}">Ledger</div>
-    <h1 class="page-title h2 mb-4" th:text="${title}">Poultry Ledger</h1>
-</div></main>
+  <main class="header-main">
+    <div class="mobile-toolbar"><button id="nav-toggle" class="menu-toggle" type="button" aria-controls="site-navigation" aria-expanded="false" aria-label="Open navigation"><span></span><span></span><span></span></button><div class="brand fw-bold"><span class="brand-mark"></span>Poultry Ledger</div><span class="small text-muted">Kenya · sh</span></div>
+    <div class="page-wrap"><div class="eyebrow mb-2" th:text="${eyebrow}">Ledger</div><h1 class="page-title h2 mb-4" th:text="${title}">Poultry Ledger</h1></div>
+  </main>
+  <button id="nav-scrim" class="nav-scrim" type="button" aria-label="Close navigation"></button>
 </div>

@@ -1,10 +1,11 @@
-<!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<div th:fragment="footer">
-  <footer class="text-center small text-muted py-4">Poultry Ledger · simple records for the daily rhythm of the farm</footer>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    document.querySelectorAll('[data-today]').forEach(function(el){ if(!el.value) el.value=new Date().toISOString().slice(0,10); });
-    document.querySelectorAll('[data-confirm]').forEach(function(el){ el.addEventListener('submit',function(e){ if(!confirm(el.dataset.confirm)){e.preventDefault();} }); });
-  </script>
-</div>
+<div th:fragment="footer" class="site-footer-wrap"><footer class="site-footer text-center small text-muted py-4">Poultry Ledger · simple records for the daily rhythm of the farm</footer><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script><script>
+const localDateString=function(date){return date.getFullYear()+'-'+String(date.getMonth()+1).padStart(2,'0')+'-'+String(date.getDate()).padStart(2,'0');};
+document.querySelectorAll('[data-today]').forEach(function(el){if(!el.value)el.value=localDateString(new Date());});
+document.querySelectorAll('[data-confirm]').forEach(function(el){el.addEventListener('submit',function(e){if(!confirm(el.dataset.confirm))e.preventDefault();});});
+const navToggle=document.getElementById('nav-toggle'),navScrim=document.getElementById('nav-scrim');
+const closeNavigation=function(){document.body.classList.remove('nav-open');if(navToggle){navToggle.setAttribute('aria-expanded','false');navToggle.setAttribute('aria-label','Open navigation');}};
+if(navToggle)navToggle.addEventListener('click',function(){const open=document.body.classList.toggle('nav-open');navToggle.setAttribute('aria-expanded',String(open));navToggle.setAttribute('aria-label',open?'Close navigation':'Open navigation');});
+if(navScrim)navScrim.addEventListener('click',closeNavigation);
+document.querySelectorAll('#site-navigation .nav-link').forEach(function(link){link.addEventListener('click',closeNavigation);});
+</script></div>

@@ -15,7 +15,6 @@ public class Sitting {
     @NotNull @Min(0) @Column(nullable = false)
     private Integer eggsGiven;
     private Integer chicksHatched;
-    private LocalDate actualHatchDate;
     @Column(nullable = false)
     private LocalDate expectedHatchDate;
     @Column(nullable = false, unique = true)
@@ -31,8 +30,6 @@ public class Sitting {
     public void setEggsGiven(Integer eggsGiven) { this.eggsGiven = eggsGiven; }
     public Integer getChicksHatched() { return chicksHatched; }
     public void setChicksHatched(Integer chicksHatched) { this.chicksHatched = chicksHatched; }
-    public LocalDate getActualHatchDate() { return actualHatchDate; }
-    public void setActualHatchDate(LocalDate actualHatchDate) { this.actualHatchDate = actualHatchDate; }
     public LocalDate getExpectedHatchDate() { return expectedHatchDate; }
     public void setExpectedHatchDate(LocalDate expectedHatchDate) { this.expectedHatchDate = expectedHatchDate; }
     public String getChickGroupCode() { return chickGroupCode; }

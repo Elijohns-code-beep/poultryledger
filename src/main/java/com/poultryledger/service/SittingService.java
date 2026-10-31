@@ -37,9 +37,7 @@ public class SittingService {
     @Transactional
     public Sitting save(Sitting sitting) {
         sitting.setExpectedHatchDate(expectedHatchDate(sitting.getDateGiven()));
-        if (sitting.getChicksHatched() != null && sitting.getChicksHatched() > 0 && sitting.getActualHatchDate() == null) throw new IllegalArgumentException("Enter the actual hatch date when chicks hatched is recorded.");
-        LocalDate codeDate = sitting.getChicksHatched() != null && sitting.getChicksHatched() > 0 && sitting.getActualHatchDate() != null ? sitting.getActualHatchDate() : sitting.getExpectedHatchDate();
-        sitting.setChickGroupCode(uniqueCode(codeDate, sitting.getId()));
+        sitting.setChickGroupCode(uniqueCode(sitting.getExpectedHatchDate(), sitting.getId()));
         Sitting saved=sittingRepository.save(sitting);
         if (saved.getChicksHatched() != null && saved.getChicksHatched() > 0) {
             ChickGroup group=saved.getChickGroup();
